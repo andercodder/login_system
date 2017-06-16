@@ -3,7 +3,7 @@
     include_once 'resource/Database.php';
     include_once 'resource/utilities.php';
 
-    if(isset($_POST['loginBtn'])) {
+    if(isset($_POST['loginBtn'])){
 
       //array to hold error_get_last
       $form_errors = array();
@@ -17,8 +17,33 @@
 
         if (empty($form_errors)) {
 
+            //COLLECT FORM DATA
+          $user = $_POST['username'];
+          $password = $_POST['password'];
           //check if user exist in the database
           # code...
+          $sqlQuery = "SELECT * FROM users WHERE username = :username";
+          $statement = $db->prepare($sqlQuery);
+          $statement->execute(array(':username' => $user));
+
+          while ($row = $statement-> fetch()) {
+            $id = $row['id'];
+            $hashed_password = $row['password'];
+            $username = $row['username'];
+
+
+            if (password_verify($password, $hashed_password)) {
+              $_SESSION['id'] = $id;
+              $_SESSION['username'] = $username;
+              header("location: index.php");
+
+            }else {
+              $result = "<p style='padding:20px; color:red; border:1px solid gray;'> Invalid username or password</p>";
+            }
+            # code...
+          }
+
+
         }else {
           if (count($form_errors) == 1){
             $result = "<p style='color:red;'> There was one error in the form </p>";
@@ -52,7 +77,7 @@
           <td>Username:</td><td><input type="text" name="username" value=""></td>
         </tr>
         <tr>
-            <td>Password:</td><td><input type="text" name="password" value=""></td>
+            <td>Password:</td><td><input type="password" name="password" value=""></td>
         </tr>
         <tr>
           <td><input  type="submit" name="loginBtn" value="Signin" style="float:right;"></td>
