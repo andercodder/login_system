@@ -15,7 +15,8 @@ try {
 
   //echo "conneted to register database";
 
-} catch (PDOException $ex) {
+} catch (PDOException
+$ex) {
   echo "Connetcion failed" . $ex->getMessage();
 
 }
