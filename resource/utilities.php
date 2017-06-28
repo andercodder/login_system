@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ ini_set('display_errors', 1);
+
 /**
  * @param $required_fields_array, n array containing the list of all required fields
  * @return array, containing all errors
@@ -94,9 +98,9 @@ function redirectTo($page){
 function checkDuplicateEntries($table, $column_name, $value, $db){
 
 try {
-  $sqlQuery = "SELECT * FROM " .$table. "WHERE" .$column_name. "=:$column_name";
+  $sqlQuery = "SELECT * FROM $table  WHERE $column_name =:$column_name";
   $statement = $db->prepare($sqlQuery);
-  $statement->execute(array(':$column_name' => $value));
+  $statement->execute(array(":$column_name" => $value));
 
   if ($row = $statement->fetch()) {
     return true;
@@ -109,7 +113,6 @@ try {
 
   //handle exception
 
-}
-
+   }
 
 }

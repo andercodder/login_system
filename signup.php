@@ -80,27 +80,39 @@ if(isset($_POST['signupBtn'])){
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Register Page</title>
-</head>
-<body>
-<h2>User Authentication System </h2><hr>
 
-<h3>Registration Form</h3>
+<?php   $page_title = "User Authetication - Registration Form";
+  include_once 'partials/header.php'; ?>
 
 <?php if(isset($result)) echo $result; ?>
 <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
-<form method="post" action="">
-    <table>
-        <tr><td>Email:</td> <td><input type="text" value="" name="email"></td></tr>
-        <tr><td>Username:</td> <td><input type="text" value="" name="username"></td></tr>
-        <tr><td>Password:</td> <td><input type="password" value="" name="password"></td></tr>
-        <tr><td></td><td><input style="float: right;" type="submit" name="signupBtn" value="Signup"></td></tr>
-    </table>
-</form>
-<p><a href="index.php">Back</a> </p>
+
+<div class="container">
+  <section class="col col-lg-7">
+
+          <form action="" method="POST">
+
+            <div class="form-group">
+              <label for="emailField">email</label>
+              <input type="email" class="form-control" name="email" id="emailField" placeholder="email address">
+            </div>
+            <div class="form-group">
+              <label for="usernameField">Username</label>
+              <input type="text" class="form-control" name="username" id="usernameField" placeholder="username">
+            </div>
+            <div class="form-group">
+              <label for="passwordField">Password</label>
+              <input type="password" name="password" class="form-control" id="passwordField" placeholder="Password">
+            </div>
+
+            <button type="submit" name="signupBtn" class="btn btn-primary pull-right">Sign UP</button>
+          </form>
+    </section>
+        <p><a href="index.php">Back</a> </p>
+
+  </div>
+
+
+<?php include_once 'partials/footer.php'; ?>
 </body>
 </html>

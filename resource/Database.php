@@ -4,9 +4,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 //set_include_path('/etc/php5/cli/20131226/pdo.so');
-$username = 'andre_wd';
+$username = 'root';
 $dsn = 'mysql:host=localhost;dbname=register';
-$password = 'mywdpass';
+$password = 'D3b1an.1000!';
 
 
 try {

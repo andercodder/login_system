@@ -12,29 +12,38 @@
   }
   elseif (defined('PDO::ATTR_DRIVER_NAME')) {
   echo 'PDO available test'; }*/
+  $page_title = "User Authentication - Homepage";
+  include_once 'partials/header.php';
  ?>
 
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-</head>
-<body>
-<h2>User Authentication System </h2><hr>
 
-<?php if (!isset($_SESSION['username'])): ?>
+    <div class="container">
 
-<p>you are not currently sign in <a href="login.php">login</a> Not yet a member?<a href="signup.php">Signup</a></p>
-<?php else: ?>
-<p>you are logged in as <?php if (isset($_SESSION['username'])) echo $_SESSION['username']; ?> <a href="logout.php">Logout</a></p>
-<?php endif ?>
+      <div class="flag">
+        <h1>User Authentication-Homepage</h1>
+        <p class="lead">Learn to Code A login and registration System with PHP.<br> Enhance your PHP skill and make more cash.</p>
+
+
+        <?php if (!isset($_SESSION['username'])): ?>
+
+        <p class="lead">you are not currently sign in <a href="login.php">login</a> Not yet a member?<a href="signup.php">Signup</a></p>
+        <?php else: ?>
+        <p class="lead">you are logged in as <?php if (isset($_SESSION['username'])) echo $_SESSION['username']; ?> <a href="logout.php">Logout</a></p>
+        <?php endif ?>
+      </div>
+
+    </div><!-- /.container -->
+
+<hr>
+
 <?php
 //print_r(get_loaded_extensions());
 
  include_once 'resource/Database.php';
 
-
+include_once 'partials/footer.php';
  ?>
+
 
 </body>
 </html>
