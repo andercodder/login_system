@@ -94,11 +94,11 @@ if(isset($_POST['signupBtn'])){
 
             <div class="form-group">
               <label for="emailField">email</label>
-              <input type="email" class="form-control" name="email" id="emailField" placeholder="email address">
+              <input type="email" class="form-control" name="email" id="emailField" placeholder="email address" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="usernameField">Username</label>
-              <input type="text" class="form-control" name="username" id="usernameField" placeholder="username">
+              <input type="text" class="form-control" name="username" id="usernameField" placeholder="username" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="passwordField">Password</label>
