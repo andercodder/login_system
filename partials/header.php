@@ -22,18 +22,34 @@
  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
    <span class="navbar-toggler-icon"></span>
  </button>
- <!-- <a class="navbar-brand" href="#"><img src="imagens/logo-small.png" alt="logo" /></a>-->
+  <a class="navbar-brand" href="index.php">User Authentication</a>
 
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <ul class="navbar-nav mr-auto mt-2 mt-md-0 navbar-right">
      <li class="nav-item active">
        <a class="nav-link" href="index.php">HOME <span class="sr-only">(current)</span></a>
      </li>
-     <li class="nav-item">
-       <a class="nav-link" href="#about">ABOUT</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link" href="#features">FEATURES</a>
+         <?php if (isset($_SESSION['username'])): ?>
+           <li class="nav-item">
+             <a class="nav-link" href="#">My Profile</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="logout.php">Logout</a>
+           </li>
+
+         <?php else: ?>
+           <li class="nav-item">
+             <a class="nav-link" href="#about">about</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="login.php">Login</a><li>
+               <li class="nav-item">
+                 <a class="nav-link" href="signup.php">about</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#features">Features</a><li>
+               <?php endif ?>
+
 
    </ul>
 

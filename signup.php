@@ -73,20 +73,21 @@ if(isset($_POST['signupBtn'])){
         if(count($form_errors) == 1){
             $result = flashMessage(" There was 1 error in the form");
         }else{
-            $result = flashMessage("There were " .count($form_errors). " errors in the form <br>");
+            $result = flashMessage(" There were " .count($form_errors). " errors in the form <br>");
         }
     }
+  }
 
-}
 
 ?>
 
 <?php   $page_title = "User Authetication - Registration Form";
   include_once 'partials/header.php'; ?>
-
-<?php if(isset($result)) echo $result; ?>
-<?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
-
+  <div>
+  <?php if(isset($result)) echo $result; ?>
+  <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
+  </div>
+  <div class="clearfix"></div>
 <div class="container">
   <section class="col col-lg-7">
 
@@ -94,11 +95,11 @@ if(isset($_POST['signupBtn'])){
 
             <div class="form-group">
               <label for="emailField">email</label>
-              <input type="email" class="form-control" name="email" id="emailField" placeholder="email address" autocomplete="off">
+              <input type="email" class="form-control" name="email" id="emailField" placeholder="email address">
             </div>
             <div class="form-group">
               <label for="usernameField">Username</label>
-              <input type="text" class="form-control" name="username" id="usernameField" placeholder="username" autocomplete="off">
+              <input type="text" class="form-control" name="username" id="usernameField" placeholder="username">
             </div>
             <div class="form-group">
               <label for="passwordField">Password</label>

@@ -86,20 +86,35 @@ if(isset($_POST['passwordResetBtn'])){
     <title>Password Reset Page</title>
 </head>
 <body>
-<h2>User Authentication System </h2><hr>
+  <?php   $page_title = "Login Page";
+    include_once 'partials/header.php'; ?>
+  <div>
 
-<h3>Password Reset Form</h3>
+<div class="container">
+  <section class="col col-lg-7">
+    <h2>Password Reset Form</h2><hr>
 
-<?php if(isset($result)) echo $result; ?>
-<?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
+    <div>
+    <?php if(isset($result)) echo $result; ?>
+    <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
+    </div>
+    <div class="clearfix"></div>
 <form method="post" action="">
-    <table>
-        <tr><td>Email:</td> <td><input type="text" value="" name="email"></td></tr>
-        <tr><td>New Password:</td> <td><input type="password" value="" name="new_password"></td></tr>
-        <tr><td>Confirm Password:</td> <td><input type="password" value="" name="confirm_password"></td></tr>
-        <tr><td></td><td><input style="float: right;" type="submit" name="passwordResetBtn" value="Reset Password"></td></tr>
-    </table>
+  <div class="form-group">
+        <label for="emailField">Email address</label>
+        <input type="text" name="email" class="form-control" id="emailField" placeholder="email">
+  </div>
+  <div class="form-group">
+        <label for="emailField">New Password</label>
+        <input type="password" name="new_password" class="form-control" id="passwordField" placeholder="New Password">
+  </div>
+    <button type="submit" name="passwordResetBtn" class="btn btn-primary pull-right">Reset Password</button>
 </form>
 <p><a href="index.php">Back</a> </p>
+
+</section>
+
+</div>
+<?php include_once 'partials/footer.php'; ?>
 </body>
 </html>

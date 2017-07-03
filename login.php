@@ -57,10 +57,11 @@ if(isset($_POST['loginBtn'])){
 
 <?php   $page_title = "Login Page";
   include_once 'partials/header.php'; ?>
-
+<div>
 <?php if(isset($result)) echo $result; ?>
 <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
-
+</div>
+<div class="clearfix"></div>
 <div class="container">
   <section class="col col-lg-7">
 
