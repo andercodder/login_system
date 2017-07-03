@@ -94,7 +94,7 @@ if(isset($_POST['passwordResetBtn'])){
   <section class="col col-lg-7">
     <h2>Password Reset Form</h2><hr>
 
-    <div>
+    <div class="alert alert-danger">
     <?php if(isset($result)) echo $result; ?>
     <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
     </div>

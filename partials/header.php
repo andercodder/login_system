@@ -8,7 +8,10 @@
 
 <!--css for font awesome -->
 <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-<!-- -->
+<!--sweetalert -->
+<script src="./sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./sweetalert-master/dist/sweetalert.css">
+<!--sweetalert-->
 
 <!-- my css -->
 <link rel="stylesheet" type="text/css" href="css/custom-style.css">
@@ -26,7 +29,7 @@
 
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <ul class="navbar-nav mr-auto mt-2 mt-md-0 navbar-right">
-     <li class="nav-item active">
+     <li class="nav-item">
        <a class="nav-link" href="index.php">HOME <span class="sr-only">(current)</span></a>
      </li>
          <?php if (isset($_SESSION['username'])): ?>

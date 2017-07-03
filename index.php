@@ -19,6 +19,15 @@
 
     <div class="container">
 
+        <script type="text/javascript">
+
+            swal({title: "Error!",
+             text: "Here's my error message!",
+             type: "error",
+             confirmButtonText: "Cool"
+           });
+
+        </script>
       <div class="flag">
         <h1>User Authentication-Homepage</h1>
         <p class="lead">Learn to Code A login and registration System with PHP.<br> Enhance your PHP skill and make more cash.</p>
