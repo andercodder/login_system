@@ -48,7 +48,9 @@ if(isset($_POST['loginBtn'])){
                             </script>";
             //redirectTo('index');
            }else{
+             if(!empty($form_errors)){
                $result = flashMessage("Invalid username or password");
+             }
            }
        }
 
