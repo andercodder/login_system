@@ -7,7 +7,7 @@
     <title>Password Reset Page</title>
 </head>
 <body>
-  <?php   $page_title = "Login Page";
+  <?php   $page_title = "User Authetication - Change Password";
     include_once 'partials/header.php';
       include_once 'partials/parseChangePassword.php';
     ?>
@@ -15,12 +15,13 @@
 
 <div class="container">
   <section class="col col-lg-7">
-    <h2>Password Reset Form</h2><hr>
+    <h2> Change Password </h2><hr>
 
-    <div class="alert alert-danger">
+    <div> 
     <?php if(isset($result)) echo $result; ?>
     <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
     </div>
+
     <div class="clearfix"></div>
 <form method="post" action="">
   <div class="form-group">
