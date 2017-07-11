@@ -60,8 +60,8 @@ if(isset($_POST['passwordResetBtn'])){
 
                      $result ="<script type=\"text/javascript\">
                     swal({
-                               title: \"Congratulations $username!\",
-                               type: \"updated\",
+                               title: \"updated!\",
+                               type: \"success\",
                                text: \"Password Changed Successfully.\",
                                timer: 6000,
                                ConfirmButtonText: \"Thank you!\"
@@ -72,6 +72,7 @@ if(isset($_POST['passwordResetBtn'])){
 
                 }
                 else{
+
                   $result ="<script type=\"text/javascript\">
                  swal({
                             title: \"OOPS!\",
@@ -82,10 +83,10 @@ if(isset($_POST['passwordResetBtn'])){
                             });
                               </script>";
 
-                    $result = flashMessage("");
-                }
+                  // $result = flashMessage("The email address provided does not exist in our database, please try again");
+               }
             }catch (PDOException $ex){
-                $result = "<p style='padding:20px; border: 1px solid gray; color: red;'> An error occurred: ".$ex->getMessage()."</p>";
+                $result = flashMessage("An error occurred: " .$ex->getMessage());
             }
         }
     }
