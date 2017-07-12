@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ ini_set('display_errors', 1);
 include_once 'resource/session.php';
 include_once 'resource/Database.php';
 include_once 'resource/utilities.php';
@@ -17,6 +19,8 @@ if(isset($_POST['loginBtn'])){
         $user = $_POST['username'];
         $password = $_POST['password'];
 
+        isset($_POST['remember']) ? $remember = $_POST['remember'] : $remember = "";
+
         //check if user exist in the database
         $sqlQuery = "SELECT * FROM users WHERE username = :username";
         $statement = $db->prepare($sqlQuery);
@@ -30,6 +34,17 @@ if(isset($_POST['loginBtn'])){
            if(password_verify($password, $hashed_password)){
                $_SESSION['id'] = $id;
                $_SESSION['username'] = $username;
+
+               //remember me collator_get_error_code
+              //  $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+              //  $_SESSION['last_active'] = time();
+              //  $_SESSION['fingerprint'] = $fingerprint;
+               //
+
+               if ($remember === "yes") {
+
+                 rememberMe($id);
+                }
 
 
                //call sweet alert

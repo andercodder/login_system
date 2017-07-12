@@ -9,7 +9,10 @@
 <body>
 <h2>Login Form </h2><hr>
 
-<?php   $page_title = "Login Page";
+<?php
+error_reporting(E_ALL);
+ ini_set('display_errors', 1);
+ $page_title = "Login Page";
   include_once 'partials/header.php';
   include_once 'partials/parseLogin.php';
    ?>
@@ -33,7 +36,7 @@
 
             <div class="checkbox">
               <label>
-                <input name="remember" type="checkbox"> Remember Me
+                <input name="remember" type="checkbox" value="yes"> Remember Me
               </label>
             </div>
             <a href="change_password.php"> Change password ? </a>

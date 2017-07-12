@@ -68,7 +68,7 @@ if(isset($_POST['signupBtn'])){
               swal({
                          title: \"Congratulations $username!\",
                          type: \"success\",
-                         text: \"Registration COmpleted Successfully.\",
+                         text: \"Registration Completed Successfully.\",
                          timer: 6000,
                          ConfirmButtonText: \"Thank you!\"
                          });
