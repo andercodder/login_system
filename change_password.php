@@ -17,7 +17,7 @@
   <section class="col col-lg-7">
     <h2> Change Password </h2><hr>
 
-    <div> 
+    <div class="alert-danger">
     <?php if(isset($result)) echo $result; ?>
     <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
     </div>
