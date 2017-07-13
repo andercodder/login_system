@@ -36,10 +36,10 @@ if(isset($_POST['loginBtn'])){
                $_SESSION['username'] = $username;
 
                //remember me collator_get_error_code
-              //  $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-              //  $_SESSION['last_active'] = time();
-              //  $_SESSION['fingerprint'] = $fingerprint;
-               //
+               $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+               $_SESSION['last_active'] = time();
+               $_SESSION['fingerprint'] = $fingerprint;
+               
 
                if ($remember === "yes") {
 

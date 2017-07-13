@@ -175,7 +175,7 @@ function isCookieValid($db){
        $this->signout();
    }
  }
- return isValid;
+ return $isValid;
 }
 function signout(){
   unset($_SESSION['username']);
@@ -200,24 +200,24 @@ function signout(){
 
 //
 //
-// function guard(){
-//
-// $isValid = true;
-// $inactive = 60 * 2; //2 mins
-// $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-//
-// if ((isset($_SESSION['fingerprint']) && $_SESSION['fingerprint'] != $fingerprint)){
-//   # code...
-//   $isValid = false;
-//   signout();
-// }elseif ((isset($_SESSION[last_active]) && (time() - $_SESSION['last_active']) > $inactive) && $_SESSION['username']){
-//   # code...
-//
-//   $isValid = false;
-//   signout();
-// }else {
-//   $_SESSION['last_active'] = time();
-//      }
-//  return $isValid;
-//
-// }
+function guard(){
+
+$isValid = true;
+$inactive = 60 * 2; //2 mins
+$fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+
+if ((isset($_SESSION['fingerprint']) && $_SESSION['fingerprint'] != $fingerprint)){
+  # code...
+  $isValid = false;
+  signout();
+}else if ((isset($_SESSION['last_active']) && (time() - $_SESSION['last_active']) > $inactive) && $_SESSION['username']){
+  # code...
+
+  $isValid = false;
+  signout();
+}else {
+  $_SESSION['last_active'] = time();
+     }
+ return $isValid;
+
+}

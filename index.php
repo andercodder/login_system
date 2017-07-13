@@ -42,7 +42,7 @@
 <?php
 //print_r(get_loaded_extensions());
 
- include_once 'resource/Database.php';
+ // include_once 'resource/Database.php';
 
 include_once 'partials/footer.php';
  ?>

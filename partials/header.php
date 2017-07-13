@@ -1,3 +1,11 @@
+<?php
+error_reporting(E_ALL);
+ ini_set('display_errors', 1);
+include_once 'resource/session.php';
+include_once 'resource/Database.php';
+include_once 'resource/utilities.php';
+?>
+
 
 <html>
 <head lang="en">
@@ -28,29 +36,26 @@
   <a class="navbar-brand" href="index.php">User Authentication</a>
 
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-   <ul class="navbar-nav mr-auto mt-2 mt-md-0 navbar-right">
+   <ul class="navbar-nav mr-auto mt-2 mt-md-0 navbar-right"><i class="hide"> <?php echo guard(); ?></i>
      <li class="nav-item">
        <a class="nav-link" href="index.php">HOME <span class="sr-only">(current)</span></a>
      </li>
-         <?php if (isset($_SESSION['username'])): ?>
+         <?php if((isset($_SESSION['username']) || isCookieValid($db))): ?>
            <li class="nav-item">
              <a class="nav-link" href="#">My Profile</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="logout.php">Logout</a>
            </li>
-
-         <?php else: ?>
+       <?php else: ?>
            <li class="nav-item">
-             <a class="nav-link" href="#about">about</a>
+             <a class="nav-link" href="#">about</a>
            </li>
            <li class="nav-item">
              <a class="nav-link" href="login.php">Login</a><li>
+
                <li class="nav-item">
-                 <a class="nav-link" href="signup.php">about</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" href="#features">Features</a><li>
+                 <a class="nav-link" href="#">Features</a><li>
                <?php endif ?>
 
 
