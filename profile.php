@@ -24,7 +24,10 @@
                     <th>Username:</th><td><?php if(isset($username)) echo $username; ?></td>
                   </tr>
                   <tr>
-                    <th>Email:</th><td><?php if(isset($email)) echo $email; ?></td>
+                    <th>Email:</th><td><?php if(isset($email)) echo $email;  ?></td>
+                  </tr>
+                  <tr>
+                    <th>Date Joined:</th><td><?php if(isset($date_joined)) echo $date_joined; ?></td>
                   </tr>
                   <tr class="table bg-info">
                     <th></th><td><a href="edit-profile.php?user_identity=<?php if(isset($encode_id)) echo $encode_id; ?>">

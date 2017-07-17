@@ -39,10 +39,8 @@ if(isset($_POST['loginBtn'])){
                $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
                $_SESSION['last_active'] = time();
                $_SESSION['fingerprint'] = $fingerprint;
-               
 
                if ($remember === "yes") {
-
                  rememberMe($id);
                 }
 
