@@ -19,6 +19,11 @@
 
         <?php else: ?>
             <section class="col col-lg-7">
+
+              <div class="row col-lg-3" style="margin-bottom:10px;">
+                <img src="<?php if(isset($profile_picture)) echo $profile_picture;?> "alt="profile pic" class="img img-rounded" width="100" height="100">
+              </div>
+
               <table class="table table-inverse table-bordered table-hover table-sucess">
                   <tr>
                     <th>Username:</th><td><?php if(isset($username)) echo $username; ?></td>

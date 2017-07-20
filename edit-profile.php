@@ -13,7 +13,7 @@
      <title><?php if(isset($page_title)) echo $page_title; ?></title>
    </head>
    <body>
-     
+
      <div class="container">
 
         <section class="col col-lg-7">
@@ -28,7 +28,7 @@
                 <p class="lead">You Are not authorized to view this page <a href="login.php">Login</a>Not yet a member? <a href="signup.php">Signup</a></p>
               <?php else: ?>
 
-                <form  action="" method="post">
+                <form  action="" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="emailField">Email</label>
                     <input type="text" name="email" class="form-control" id="emailField" value="<?php if(isset($email)) echo $email; ?>">
@@ -37,6 +37,11 @@
                   <div class="form-group">
                     <label for="usernameField">Username</label>
                     <input type="text" name="username" class="form-control" id="usernameField" value="<?php if(isset($username)) echo $username; ?>">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fileField">Avatar</label>
+                    <input type="file" name="avatar"  id="fileField" >
                   </div>
 
                   <input type="hidden" name="hidden_id" value="<?php if(isset($id)) echo $id; ?>">

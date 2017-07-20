@@ -23,6 +23,19 @@
         $email = $rs['email'];
         $date_joined = strftime("%b, %d, %Y", strtotime($rs["join_date"]));
       }
+        // uploadpic
+        $user_pic = "uploads/".$username.".jpg";
+        $default = "uploads/default_pic.jpg";
+
+
+        if (file_exists($user_pic)) {
+          $profile_picture = $user_pic;
+          # code...
+        }else {
+          $profile_picture = $default;
+        }
+
+
         $encode_id = base64_encode("encodeuserid{$id}");
     }else if (isset($_POST['updateProfileBtn'])) {
       //initialize an array to store any error message from the form
@@ -42,6 +55,21 @@
 
       // email validation / merge the return data into form_errors array
       $form_errors = array_merge($form_errors, check_email($_POST));
+
+      //validate if file has a valid extension
+      isset($_FILES['avatar']['name']) ? $avatar = $_FILES['avatar']['name'] : $avatar = null;
+
+      if ($avatar != null) {
+
+        $form_errors = array_merge($form_errors, isValidImage($avatar));
+        # code...
+      }
+
+
+
+
+
+
 
       // collect form data and store in variables
       $email = $_POST['email'];
