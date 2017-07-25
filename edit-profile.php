@@ -40,7 +40,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="fileField">Avatar</label>
+                    <label for="fileField">Avatar</label><br>
                     <input type="file" name="avatar"  id="fileField" >
                   </div>
 

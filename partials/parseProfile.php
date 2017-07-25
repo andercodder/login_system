@@ -88,7 +88,7 @@
           $statement->execute(array(':username' =>$username, ':email' => $email, 'id' => $hidden_id));
 
           // check if one new row was created
-          if ($statement->rowCount() == 1){
+          if ($statement->rowCount() == 1 || uploadAvatar($username)){
             $result =   $result = "<script type=\"text/javascript\">
                   swal(\"Updated!\",\"Profile Updated Sucessfully.\",\"success\");
                 </script>";
