@@ -30,43 +30,50 @@ if(isset($_POST['loginBtn'])){
            $id = $row['id'];
            $hashed_password = $row['password'];
            $username = $row['username'];
+           // activate user sign in for the first timer
+          $activated =$row['activated'];
+          if ($activated == "0") {
+              $result = flashMessage("Please activate your account");
+          }
+          else {
 
-           if(password_verify($password, $hashed_password)){
-               $_SESSION['id'] = $id;
-               $_SESSION['username'] = $username;
+            if(password_verify($password, $hashed_password)){
+                $_SESSION['id'] = $id;
+                $_SESSION['username'] = $username;
 
-               //remember me collator_get_error_code
-               $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
-               $_SESSION['last_active'] = time();
-               $_SESSION['fingerprint'] = $fingerprint;
+                //remember me collator_get_error_code
+                $fingerprint = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+                $_SESSION['last_active'] = time();
+                $_SESSION['fingerprint'] = $fingerprint;
 
-               if ($remember === "yes") {
-                 rememberMe($id);
+                if ($remember === "yes") {
+                  rememberMe($id);
+                 }
+
+
+                //call sweet alert
+               echo $welcome ="<script type=\"text/javascript\">
+               swal({
+                          title: \"welcome back $username!\",
+                          type: \"success\",
+                          text: \"You're being logged in.\",
+                          timer: 6000,
+                          showConfirmButton: false
+                          });
+                          setTimeout(function(){
+                            window.location.href = 'index.php';
+                          }, 5000)
+
+                             </script>";
+             //redirectTo('index');
+            }else{
+              if(!empty($form_errors)){
+                $result = flashMessage("Invalid username or password");
                 }
 
-
-               //call sweet alert
-              echo $welcome ="<script type=\"text/javascript\">
-              swal({
-                         title: \"welcome back $username!\",
-                         type: \"success\",
-                         text: \"You're being logged in.\",
-                         timer: 6000,
-                         showConfirmButton: false
-                         });
-                         setTimeout(function(){
-                           window.location.href = 'index.php';
-                         }, 5000)
-
-                            </script>";
-            //redirectTo('index');
-           }else{
-             if(!empty($form_errors)){
-               $result = flashMessage("Invalid username or password");
              }
            }
        }
-
     }else{
         if(count($form_errors) == 1){
             $result = flashMessage("There was one error in the form");

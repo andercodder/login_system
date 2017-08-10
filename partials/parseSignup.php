@@ -9,7 +9,7 @@
 //add our database connection script
 include_once 'resource/Database.php';
 include_once 'resource/utilities.php';
-
+include_once 'resource/send-email.php';
 //process the form
 if(isset($_POST['signupBtn'])){
     //initialize an array to store any error message from the form
@@ -64,16 +64,60 @@ if(isset($_POST['signupBtn'])){
             //check if one new row was created
             if($statement->rowCount() == 1){
 
-              echo $result ="<script type=\"text/javascript\">
-              swal({
-                         title: \"Congratulations $username!\",
-                         type: \"success\",
-                         text: \"Registration Completed Successfully.\",
-                         timer: 6000,
-                         ConfirmButtonText: \"Thank you!\"
-                         });
-                           </script>";
+              $user_id = $db->lastInsertId();
+              $encode_id = base64_encode("encodeuserid($user_id)");
 
+
+
+              // prepare email body
+
+              $mail_body = '<html>
+              <body style="background-color:#CCCCCC; color:#000; font-family: Arial, Helvetica, sans-serif;
+                                  line-height:1.8em;">
+              <h2>User Authentication: Code A Secured Login System</h2>
+              <p>Dear '.$username.'<br><br>Thank you for registering, please click on the link below to
+              	confirm your email address</p>
+              <p><a href="http://localhost/c_login/activate.php?id='.$encode_id.'"> Confirm Email</a></p>
+              <p><strong>&copy;2017 avmc </strong></p>
+              </body>
+              </html>';
+
+
+              $mail->addAddress($email, $username);
+              $mail->subject = "Message from andre";
+              $mail->Body = $mail_body;
+
+
+              //Error Handling for PHPMailer
+              if(!$mail->Send()){
+              $result = "<script type=\"text/javascript\">
+                                  swal(\"Error\",\" Email sending failed: $mail->ErrorInfo, \",\"error\");</script>";
+              }
+              else{
+              $result = "<script type=\"text/javascript\">
+                                          swal({
+                                          title: \"Congratulations $username!\",
+                                          text: \"Registration Completed Successfully. Please check your email for confirmation link\",
+                                          type: 'success',
+                                          confirmButtonText: \"Thank You!\" });
+                                      </script>";
+              }
+
+
+
+
+
+
+            //   echo $result ="<script type=\"text/javascript\">
+            //   swal({
+            //              title: \"Congratulations $username!\",
+            //              type: \"success\",
+            //              text: \"Registration Completed Successfully.\",
+            //              timer: 6000,
+            //              ConfirmButtonText: \"Thank you!\"
+            //              });
+            //                </script>";
+            //
             }
         }catch (PDOException $ex){
             $result = flashMessage("An error has occurred: " .$ex->getMessage());
@@ -87,6 +131,26 @@ if(isset($_POST['signupBtn'])){
         }
     }
   }
+  //activation
+else if(isset($_GET['id'])) {
+  $encoded_id = $_GET['id'];
+  $decode_id = base64_decode($encoded_id);
+  $user_id_array = explode("encodeuserid", $decode_id);
+  //var_dump($user_id_array);
+  $id = $user_id_array[1];echo $id;
 
+  $sql = "UPDATE users SET activated =:activated WHERE id=:id AND activated='0'";
+
+  $statement = $db->prepare($sql);
+  $statement->execute(array(':activated' => "1", ':id' => $id));
+
+  if ($statement->rowCount() == 1) {
+    $result = '<h2>Email Confirmed </h2>
+    <p>Your email address has been verified, you can now <a href="login.php">login</a> with your email and password.</p>';
+  } else {
+    $result = "<p class='lead'>No changes made please contact site admin,
+    if you have not confirmed your email before</p>";
+   }
+  }
 
 ?>
