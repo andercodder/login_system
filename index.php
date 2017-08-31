@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
   <?php
- error_reporting(E_ALL);
-  ini_set('display_errors', 1);
+ //error_reporting(E_ALL);
+  //ini_set('display_errors', 1);
   include_once 'resource/session.php';
 
 /*  ini_set('include_path', '/etc/php5/cli/20131226/pdo.so');

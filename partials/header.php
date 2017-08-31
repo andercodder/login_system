@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
- ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+ //ini_set('display_errors', 1);
 include_once 'resource/session.php';
 include_once 'resource/Database.php';
 include_once 'resource/utilities.php';
