@@ -65,11 +65,10 @@ if(isset($_POST['signupBtn'])){
             if($statement->rowCount() == 1){
 
               $user_id = $db->lastInsertId();
-              $encode_id = base64_encode("encodeuserid($user_id)");
-
-
-
+              $encode_id = base64_encode("encodeuserid{$user_id}");
+              //ok signup now
               // prepare email body
+              //ok
 
               $mail_body = '<html>
               <body style="background-color:#CCCCCC; color:#000; font-family: Arial, Helvetica, sans-serif;
