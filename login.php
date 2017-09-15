@@ -39,7 +39,7 @@ error_reporting(E_ALL);
                 <input name="remember" type="checkbox" value="yes"> Remember Me
               </label>
             </div>
-            <a href="change_password.php"> Change password ? </a>
+            <a href="password_recovery_link.php"> Forgot password ? </a>
             <button type="submit" name="loginBtn" class="btn btn-primary pull-right">Sign in</button>
           </form>
     </section>
