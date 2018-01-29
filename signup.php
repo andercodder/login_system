@@ -26,7 +26,7 @@
               <label for="passwordField">Password</label>
               <input type="password" name="password" class="form-control" id="passwordField" placeholder="Password">
             </div>
-
+             <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
             <button type="submit" name="signupBtn" class="btn btn-primary pull-right">Sign UP</button>
           </form>
     </section>

@@ -266,3 +266,23 @@ function uploadAvatar($username){
   }
     return $isImageMoved;
 }
+
+function _token(){
+
+  if(isset($_SESSION['token'])){
+    return $_SESSION['token'];
+  }
+
+  $randomToken = base64_encode(openssl_random_pseudo_bytes(32));
+  // echo $randomToken = md5(uniqid(rand(), true)). "md5";
+  return $_SESSION['token'] = $randomToken;
+
+}
+function validate_token($requestToken){
+  if (isset($_SESSION['token']) && $requestToken === $_SESSION['token'] ) {
+    unset($_SESSION['token']);
+
+    return true;
+  }
+  return false;
+}

@@ -2,6 +2,7 @@
 $page_title = "User Authentication - Password Recovery";
 include_once 'partials/header.php';
 include_once 'partials/parsePasswordReset.php';
+
 ?>
 
 <div class="container">
@@ -14,7 +15,7 @@ include_once 'partials/parsePasswordReset.php';
         </div>
         <div class="clearfix"></div>
 
-        To request password reset link, please enter you email address in the form below <br /><br />
+        To request password english reset link, please enter you email address in the form below <br /><br />
         <form action="" method="post">
             <div class="form-group">
                 <label for="emailField">Email Address</label>

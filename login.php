@@ -40,7 +40,9 @@ error_reporting(E_ALL);
               </label>
             </div>
             <a href="password_recovery_link.php"> Forgot password ? </a>
-            <button type="submit" name="loginBtn" class="btn btn-primary pull-right">Sign in</button>
+
+             <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
+            <button type="submit" name="loginBtn" id="loginBtn" class="btn btn-primary pull-right">Sign in</button>
           </form>
     </section>
         <p><a href="index.php">Back</a> </p>

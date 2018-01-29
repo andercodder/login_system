@@ -10,11 +10,12 @@ $mail->Port = 465; //587;
 $mail->Host = "smtp.gmail.com";
 $mail->SMTPSecure = 'ssl';
 $mail->IsHTML(true);
+// $mail->SMTPDebug = 1;
 
 
 $mail->SMTPAuth = true;
-$mail->Username = "andretutorials1000@gmail.com";
-$mail->Password = "Tut0r1als!w3b";
+$mail->Username = "andretutorials1000@gmail.com"; //wrong username or password fixed that bye..ok very thank u kk
+$mail->Password = "7u70r1als.W3b!1000";
 
 //Sender Info
 $mail->From = "no-reply@andre.com";
