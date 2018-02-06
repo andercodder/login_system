@@ -15,7 +15,7 @@ $mail->IsHTML(true);
 
 $mail->SMTPAuth = true;
 $mail->Username = "andretutorials1000@gmail.com"; //wrong username or password fixed that bye..ok very thank u kk
-$mail->Password = "7u70r1als.W3b!1000";
+$mail->Password = "";
 
 //Sender Info
 $mail->From = "no-reply@andre.com";
